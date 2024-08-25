@@ -12,6 +12,9 @@ dependencies:
   hooks_riverpod: ^2.5.1
   flutter_hooks:
   riverpod_annotation: ^2.3.5
+  flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.0.10+1
+  freezed_annotation: ^2.4.4
 
 dev_dependencies:
   flutter_test:
@@ -21,6 +24,10 @@ dev_dependencies:
   # custom_lint:
   riverpod_generator: ^2.4.2
   riverpod_lint: ^2.3.12
+  freezed: ^2.5.7
+
+dependency_overrides: 
+  meta: 1.15.0
 
 flutter:
   uses-material-design: true
