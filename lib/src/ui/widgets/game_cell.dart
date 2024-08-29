@@ -32,7 +32,7 @@ class GameCell extends ConsumerWidget {
         ),
         child: Center(
           child: Text(
-            "${cellValue.value}",
+            "${cellValue.value == 0 ? "" : cellValue.value}",
             style: context.textTheme.headlineSmall,
           ),
         ),
