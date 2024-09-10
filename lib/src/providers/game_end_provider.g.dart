@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'game_play_provider.dart';
+part of 'game_end_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$gamePlayNotifierHash() => r'889840e2f023fe2000e5c3c94cd0aeb58e80560d';
+String _$gameEndNotifierHash() => r'7cc976645e8b05085179c0fb23a4083704ea9cbb';
 
-/// See also [GamePlayNotifier].
-@ProviderFor(GamePlayNotifier)
-final gamePlayNotifierProvider = AutoDisposeNotifierProvider<GamePlayNotifier,
-    List<List<CellValue>>>.internal(
-  GamePlayNotifier.new,
-  name: r'gamePlayNotifierProvider',
+/// See also [GameEndNotifier].
+@ProviderFor(GameEndNotifier)
+final gameEndNotifierProvider =
+    AutoDisposeNotifierProvider<GameEndNotifier, bool>.internal(
+  GameEndNotifier.new,
+  name: r'gameEndNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$gamePlayNotifierHash,
+      : _$gameEndNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$GamePlayNotifier = AutoDisposeNotifier<List<List<CellValue>>>;
+typedef _$GameEndNotifier = AutoDisposeNotifier<bool>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
