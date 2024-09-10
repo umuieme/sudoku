@@ -19,6 +19,9 @@ mixin _$CellValue {
   int get x => throw _privateConstructorUsedError;
   int get y => throw _privateConstructorUsedError;
   int get value => throw _privateConstructorUsedError;
+  bool get isGenerated => throw _privateConstructorUsedError;
+  bool get isDuplicated => throw _privateConstructorUsedError;
+  bool get isInvalid => throw _privateConstructorUsedError;
 
   /// Create a copy of CellValue
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +35,13 @@ abstract class $CellValueCopyWith<$Res> {
   factory $CellValueCopyWith(CellValue value, $Res Function(CellValue) then) =
       _$CellValueCopyWithImpl<$Res, CellValue>;
   @useResult
-  $Res call({int x, int y, int value});
+  $Res call(
+      {int x,
+      int y,
+      int value,
+      bool isGenerated,
+      bool isDuplicated,
+      bool isInvalid});
 }
 
 /// @nodoc
@@ -53,6 +62,9 @@ class _$CellValueCopyWithImpl<$Res, $Val extends CellValue>
     Object? x = null,
     Object? y = null,
     Object? value = null,
+    Object? isGenerated = null,
+    Object? isDuplicated = null,
+    Object? isInvalid = null,
   }) {
     return _then(_value.copyWith(
       x: null == x
@@ -67,6 +79,18 @@ class _$CellValueCopyWithImpl<$Res, $Val extends CellValue>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as int,
+      isGenerated: null == isGenerated
+          ? _value.isGenerated
+          : isGenerated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDuplicated: null == isDuplicated
+          ? _value.isDuplicated
+          : isDuplicated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isInvalid: null == isInvalid
+          ? _value.isInvalid
+          : isInvalid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -79,7 +103,13 @@ abstract class _$$CellValueImplCopyWith<$Res>
       __$$CellValueImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int x, int y, int value});
+  $Res call(
+      {int x,
+      int y,
+      int value,
+      bool isGenerated,
+      bool isDuplicated,
+      bool isInvalid});
 }
 
 /// @nodoc
@@ -98,6 +128,9 @@ class __$$CellValueImplCopyWithImpl<$Res>
     Object? x = null,
     Object? y = null,
     Object? value = null,
+    Object? isGenerated = null,
+    Object? isDuplicated = null,
+    Object? isInvalid = null,
   }) {
     return _then(_$CellValueImpl(
       x: null == x
@@ -112,14 +145,33 @@ class __$$CellValueImplCopyWithImpl<$Res>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as int,
+      isGenerated: null == isGenerated
+          ? _value.isGenerated
+          : isGenerated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDuplicated: null == isDuplicated
+          ? _value.isDuplicated
+          : isDuplicated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isInvalid: null == isInvalid
+          ? _value.isInvalid
+          : isInvalid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$CellValueImpl implements _CellValue {
-  _$CellValueImpl({required this.x, required this.y, required this.value});
+class _$CellValueImpl extends _CellValue {
+  _$CellValueImpl(
+      {required this.x,
+      required this.y,
+      required this.value,
+      this.isGenerated = false,
+      this.isDuplicated = true,
+      this.isInvalid = false})
+      : super._();
 
   @override
   final int x;
@@ -127,10 +179,19 @@ class _$CellValueImpl implements _CellValue {
   final int y;
   @override
   final int value;
+  @override
+  @JsonKey()
+  final bool isGenerated;
+  @override
+  @JsonKey()
+  final bool isDuplicated;
+  @override
+  @JsonKey()
+  final bool isInvalid;
 
   @override
   String toString() {
-    return 'CellValue(x: $x, y: $y, value: $value)';
+    return 'CellValue(x: $x, y: $y, value: $value, isGenerated: $isGenerated, isDuplicated: $isDuplicated, isInvalid: $isInvalid)';
   }
 
   @override
@@ -140,11 +201,18 @@ class _$CellValueImpl implements _CellValue {
             other is _$CellValueImpl &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.y, y) || other.y == y) &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.isGenerated, isGenerated) ||
+                other.isGenerated == isGenerated) &&
+            (identical(other.isDuplicated, isDuplicated) ||
+                other.isDuplicated == isDuplicated) &&
+            (identical(other.isInvalid, isInvalid) ||
+                other.isInvalid == isInvalid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, x, y, value);
+  int get hashCode => Object.hash(
+      runtimeType, x, y, value, isGenerated, isDuplicated, isInvalid);
 
   /// Create a copy of CellValue
   /// with the given fields replaced by the non-null parameter values.
@@ -155,11 +223,15 @@ class _$CellValueImpl implements _CellValue {
       __$$CellValueImplCopyWithImpl<_$CellValueImpl>(this, _$identity);
 }
 
-abstract class _CellValue implements CellValue {
+abstract class _CellValue extends CellValue {
   factory _CellValue(
       {required final int x,
       required final int y,
-      required final int value}) = _$CellValueImpl;
+      required final int value,
+      final bool isGenerated,
+      final bool isDuplicated,
+      final bool isInvalid}) = _$CellValueImpl;
+  _CellValue._() : super._();
 
   @override
   int get x;
@@ -167,6 +239,12 @@ abstract class _CellValue implements CellValue {
   int get y;
   @override
   int get value;
+  @override
+  bool get isGenerated;
+  @override
+  bool get isDuplicated;
+  @override
+  bool get isInvalid;
 
   /// Create a copy of CellValue
   /// with the given fields replaced by the non-null parameter values.

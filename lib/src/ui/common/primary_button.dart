@@ -34,19 +34,20 @@ class AppPrimaryButton extends StatelessWidget {
       style: ButtonStyle(
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.r),
+            borderRadius: BorderRadius.circular(4.r),
           ),
         ),
         foregroundColor:
             WidgetStatePropertyAll(textColor ?? AppColors.onPrimaryText),
         padding: WidgetStatePropertyAll(
-            EdgeInsets.symmetric(horizontal: 32.w, vertical: 14.h)),
+          padding ?? EdgeInsets.symmetric(horizontal: 32.w, vertical: 14.h),
+        ),
         textStyle: WidgetStatePropertyAll(
           textStyle ?? context.textTheme.headlineSmall,
         ),
         backgroundColor: WidgetStatePropertyAll(
           onPressed != null
-              ? color ?? const Color(0xff864CFF)
+              ? color ?? context.primaryColor
               : AppColors.disabled,
         ),
       ),
