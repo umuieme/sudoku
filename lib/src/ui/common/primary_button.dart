@@ -40,7 +40,7 @@ class AppPrimaryButton extends StatelessWidget {
         foregroundColor:
             WidgetStatePropertyAll(textColor ?? AppColors.onPrimaryText),
         padding: WidgetStatePropertyAll(
-          padding ?? EdgeInsets.symmetric(horizontal: 32.w, vertical: 14.h),
+          padding ?? EdgeInsets.symmetric(horizontal: 32.w, vertical: 8.h),
         ),
         textStyle: WidgetStatePropertyAll(
           textStyle ?? context.textTheme.headlineSmall,

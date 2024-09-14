@@ -34,13 +34,13 @@ class AppSecondaryButton extends StatelessWidget {
       style: ButtonStyle(
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(4.r),
               side: const BorderSide(color: AppColors.primary)),
         ),
         backgroundColor: const WidgetStatePropertyAll(Colors.white),
         foregroundColor: WidgetStatePropertyAll(textColor ?? AppColors.text),
         padding: WidgetStatePropertyAll(
-            EdgeInsets.symmetric(horizontal: 32.w, vertical: 14.h)),
+            EdgeInsets.symmetric(horizontal: 32.w, vertical: 8.h)),
         textStyle: WidgetStatePropertyAll(
           textStyle ?? context.textTheme.headlineSmall,
         ),

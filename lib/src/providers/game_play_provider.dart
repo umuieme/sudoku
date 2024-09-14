@@ -2,6 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sudoku_mordern/src/config/sudoku_generator.dart';
 import 'package:sudoku_mordern/src/data/model/cell_value.dart';
 import 'package:sudoku_mordern/src/providers/cell_selection_provider.dart';
+import 'package:sudoku_mordern/src/providers/game_difficulty_provider.dart';
 import 'package:sudoku_mordern/src/providers/game_end_provider.dart';
 
 part 'game_play_provider.g.dart';
@@ -25,7 +26,9 @@ class GamePlayNotifier extends _$GamePlayNotifier {
         ));
       }
     }
-    final unsolvedSudoku = generator.removeCells(20);
+    final difficulty = ref.watch(gameDifficultyNotifierProvider);
+    final unsolvedSudoku =
+        generator.removeCells(difficulty.getRandomCellsToRemove());
     final List<List<CellValue>> unsolved = [];
     for (var i = 0; i < unsolvedSudoku.length; i++) {
       unsolved.add([]);
@@ -41,12 +44,6 @@ class GamePlayNotifier extends _$GamePlayNotifier {
   }
 
   void updateCellValue(int value) {
-    for (var element in completeSudoko) {
-      print(element.map(
-        (e) => e.value,
-      ));
-    }
-
     final selectedCell = ref.read(cellSelectionNotifierProvider);
 
     final cell = selectedCell.copyWith(value: value);
@@ -58,7 +55,6 @@ class GamePlayNotifier extends _$GamePlayNotifier {
     //   return;
     // }
     final isCompleted = checkGameOver();
-    print(isCompleted);
     if (isCompleted) {
       ref.read(gameEndNotifierProvider.notifier).updateGameOver();
     }
@@ -115,38 +111,39 @@ class GamePlayNotifier extends _$GamePlayNotifier {
     return true;
   }
 
-  // ignore: unused_element
-  bool _isSafeToPlace(List<List<CellValue>> grid, int row, int col, int num) {
-    return !_isUsedInRow(grid, row, num) &&
-        !_isUsedInCol(grid, col, num) &&
-        !_isUsedInBox(grid, row - row % 3, col - col % 3, num);
-  }
+  // TODO add funcitonality to show error cell
 
-  bool _isUsedInRow(List<List<CellValue>> grid, int row, int num) {
-    return grid[row]
-            .firstWhere(
-              (element) => element.value == num,
-              orElse: () => CellValue.empty(),
-            )
-            .value !=
-        -1;
-  }
+  // bool _isSafeToPlace(List<List<CellValue>> grid, int row, int col, int num) {
+  //   return !_isUsedInRow(grid, row, num) &&
+  //       !_isUsedInCol(grid, col, num) &&
+  //       !_isUsedInBox(grid, row - row % 3, col - col % 3, num);
+  // }
 
-  bool _isUsedInCol(List<List<CellValue>> grid, int col, int num) {
-    for (int i = 0; i < grid.length; i++) {
-      if (grid[i][col].value == num) return true;
-    }
-    return false;
-  }
+  // bool _isUsedInRow(List<List<CellValue>> grid, int row, int num) {
+  //   return grid[row]
+  //           .firstWhere(
+  //             (element) => element.value == num,
+  //             orElse: () => CellValue.empty(),
+  //           )
+  //           .value !=
+  //       -1;
+  // }
 
-  bool _isUsedInBox(
-      List<List<CellValue>> grid, int boxStartRow, int boxStartCol, int num) {
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        if (grid[boxStartRow + i][boxStartCol + j].value == num) return true;
-      }
-    }
+  // bool _isUsedInCol(List<List<CellValue>> grid, int col, int num) {
+  //   for (int i = 0; i < grid.length; i++) {
+  //     if (grid[i][col].value == num) return true;
+  //   }
+  //   return false;
+  // }
 
-    return false;
-  }
+  // bool _isUsedInBox(
+  //     List<List<CellValue>> grid, int boxStartRow, int boxStartCol, int num) {
+  //   for (int i = 0; i < 3; i++) {
+  //     for (int j = 0; j < 3; j++) {
+  //       if (grid[boxStartRow + i][boxStartCol + j].value == num) return true;
+  //     }
+  //   }
+
+  //   return false;
+  // }
 }
