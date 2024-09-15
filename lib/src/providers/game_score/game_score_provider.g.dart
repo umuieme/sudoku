@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'game_timer_provider.dart';
+part of 'game_score_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$gameTimerNotifierHash() => r'f0e1e15e538f73711f6171fdb71ef016410db8c7';
+String _$gameScoreNotifierHash() => r'1224d94b30bad1f9254f14ba6d4e917b7ff0e92f';
 
-/// See also [GameTimerNotifier].
-@ProviderFor(GameTimerNotifier)
-final gameTimerNotifierProvider =
-    AutoDisposeNotifierProvider<GameTimerNotifier, (int, String)>.internal(
-  GameTimerNotifier.new,
-  name: r'gameTimerNotifierProvider',
+/// See also [GameScoreNotifier].
+@ProviderFor(GameScoreNotifier)
+final gameScoreNotifierProvider = AutoDisposeAsyncNotifierProvider<
+    GameScoreNotifier, List<(Difficulty, int)>>.internal(
+  GameScoreNotifier.new,
+  name: r'gameScoreNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$gameTimerNotifierHash,
+      : _$gameScoreNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$GameTimerNotifier = AutoDisposeNotifier<(int, String)>;
+typedef _$GameScoreNotifier = AutoDisposeAsyncNotifier<List<(Difficulty, int)>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

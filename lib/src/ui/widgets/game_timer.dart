@@ -10,7 +10,7 @@ class GameTimer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final time = ref.watch(gameTimerNotifierProvider);
     return Text(
-      time,
+      time.$2,
       style: context.textTheme.headlineSmall,
     );
   }
