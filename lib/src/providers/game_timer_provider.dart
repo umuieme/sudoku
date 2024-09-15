@@ -9,7 +9,7 @@ part 'game_timer_provider.g.dart';
 class GameTimerNotifier extends _$GameTimerNotifier {
   Timer? _timer;
   @override
-  String build() {
+  (int, String) build() {
     // ref.listen(
     //   gameStateNotifierProvider,
     //   (previous, next) {
@@ -24,10 +24,10 @@ class GameTimerNotifier extends _$GameTimerNotifier {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       seconds++;
       // timer.;
-      state = seconds.formatToMinuteAndSecond();
+      state = (seconds, seconds.formatToMinuteAndSecond);
     });
 
-    return seconds.formatToMinuteAndSecond();
+    return (seconds, seconds.formatToMinuteAndSecond);
   }
 
   void dispose() {

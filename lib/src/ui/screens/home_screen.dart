@@ -8,6 +8,7 @@ import 'package:sudoku_mordern/src/ui/common/app_logo.dart';
 import 'package:sudoku_mordern/src/ui/common/primary_button.dart';
 import 'package:sudoku_mordern/src/ui/common/secondary_button.dart';
 import 'package:sudoku_mordern/src/ui/screens/game_screen.dart';
+import 'package:sudoku_mordern/src/ui/widgets/home_game_score.dart';
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
@@ -35,16 +36,7 @@ class HomeScreen extends HookConsumerWidget {
               AppLogo(
                 height: 200.h,
               ),
-              // Row(
-              //   children: [
-              //     Icon(
-              //       Icons.timer_rounded,
-              //       size: 56.r,
-              //       color: AppColors.primary,
-              //     ),
-              //     Text("Record time: 10:00")
-              //   ],
-              // ),
+              if (!showDifficulty.value) const HomeGameRecord(),
               const Spacer(),
               AppPrimaryButton(
                 title: "Start Game",

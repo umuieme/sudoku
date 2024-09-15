@@ -4,6 +4,8 @@ import 'package:sudoku_mordern/src/data/model/cell_value.dart';
 import 'package:sudoku_mordern/src/providers/cell_selection_provider.dart';
 import 'package:sudoku_mordern/src/providers/game_difficulty_provider.dart';
 import 'package:sudoku_mordern/src/providers/game_end_provider.dart';
+import 'package:sudoku_mordern/src/providers/game_score/game_score_provider.dart';
+import 'package:sudoku_mordern/src/providers/game_timer_provider.dart';
 
 part 'game_play_provider.g.dart';
 
@@ -56,6 +58,12 @@ class GamePlayNotifier extends _$GamePlayNotifier {
     // }
     final isCompleted = checkGameOver();
     if (isCompleted) {
+      final difficulty = ref.watch(gameDifficultyNotifierProvider);
+      final time = ref.read(gameTimerNotifierProvider).$1;
+
+      ref
+          .read(gameScoreNotifierProvider.notifier)
+          .updateScore(difficulty, time);
       ref.read(gameEndNotifierProvider.notifier).updateGameOver();
     }
   }
