@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -25,7 +26,8 @@ class GameScreen extends HookConsumerWidget {
     }
   }
 
-  void _onResetPressed(BuildContext context, WidgetRef ref) async {
+  void _onResetPressed(BuildContext context, WidgetRef ref,
+      AnimationController controller) async {
     final result = await showConfirmationDialog(
       context: context,
       title: "Do you want to reset",
@@ -34,12 +36,17 @@ class GameScreen extends HookConsumerWidget {
       confirmActionTitle: "Yes",
     );
     if (result && context.mounted) {
+      controller.forward(from: 0);
       ref.read(gamePlayNotifierProvider.notifier).resetGame();
     }
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Animation controller for the rotation
+    final controller = useAnimationController(
+      duration: const Duration(milliseconds: 800),
+    );
     ref.listen(
       gameEndNotifierProvider,
       (previous, next) {
@@ -65,21 +72,37 @@ class GameScreen extends HookConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const GameTimer(),
+          centerTitle: true,
           leading: IconButton(
             icon: const Icon(
-              Icons.exit_to_app_rounded,
+              Icons.arrow_back_ios_new_rounded,
             ),
             onPressed: () => _onExitPressed(context),
           ),
           actions: [
-            IconButton(
-              icon: SvgPicture.asset(
-                Assets.svg.reset,
-                height: 16.h,
-                width: 16.h,
+            // AnimatedBuilder(
+            //   animation: controller ,
+            //   builder: (context, child) => RotationTransition(turns: turns),
+            //   child: IconButton(
+            //     icon: SvgPicture.asset(
+            //       Assets.svg.reset,
+            //       height: 16.h,
+            //       width: 16.h,
+            //     ),
+            //     onPressed: () => _onResetPressed(context, ref),
+            //   ),
+            // ),
+            RotationTransition(
+              turns: controller,
+              child: IconButton(
+                icon: SvgPicture.asset(
+                  Assets.svg.reset,
+                  height: 16.h,
+                  width: 16.h,
+                ),
+                onPressed: () => _onResetPressed(context, ref, controller),
               ),
-              onPressed: () => _onResetPressed(context, ref),
-            ),
+            )
           ],
         ),
         body: Column(
