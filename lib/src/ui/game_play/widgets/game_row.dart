@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sudoku_mordern/src/data/model/cell_value.dart';
-import 'package:sudoku_mordern/src/ui/widgets/game_cell.dart';
+import 'package:sudoku_mordern/src/ui/game_play/widgets/game_cell.dart';
 
 class GameRow extends StatelessWidget {
   final List<CellValue> row;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sudoku_mordern/src/providers/game_play_provider.dart';
-import 'package:sudoku_mordern/src/ui/widgets/game_num_button.dart';
+import 'package:sudoku_mordern/src/ui/game_play/widgets/game_num_button.dart';
 
 class GameNumPad extends ConsumerWidget {
   const GameNumPad({super.key});

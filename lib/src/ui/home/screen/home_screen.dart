@@ -7,8 +7,8 @@ import 'package:sudoku_mordern/src/providers/game_difficulty_provider.dart';
 import 'package:sudoku_mordern/src/ui/common/app_logo.dart';
 import 'package:sudoku_mordern/src/ui/common/primary_button.dart';
 import 'package:sudoku_mordern/src/ui/common/secondary_button.dart';
-import 'package:sudoku_mordern/src/ui/screens/game_screen.dart';
-import 'package:sudoku_mordern/src/ui/widgets/home_game_score.dart';
+import 'package:sudoku_mordern/src/ui/game_play/game_screen.dart';
+import 'package:sudoku_mordern/src/ui/home/widgets/home_game_score.dart';
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
