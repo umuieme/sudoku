@@ -40,7 +40,7 @@ class AppSecondaryButton extends StatelessWidget {
         backgroundColor: const WidgetStatePropertyAll(Colors.white),
         foregroundColor: WidgetStatePropertyAll(textColor ?? AppColors.text),
         padding: WidgetStatePropertyAll(
-            EdgeInsets.symmetric(horizontal: 32.w, vertical: 8.h)),
+            padding ?? EdgeInsets.symmetric(horizontal: 32.w, vertical: 8.h)),
         textStyle: WidgetStatePropertyAll(
           textStyle ?? context.textTheme.headlineSmall,
         ),

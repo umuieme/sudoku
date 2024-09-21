@@ -13,8 +13,11 @@ class $AssetsSvgGen {
   /// File path: assets/svg/app_logo.svg
   String get appLogo => 'assets/svg/app_logo.svg';
 
+  /// File path: assets/svg/reset.svg
+  String get reset => 'assets/svg/reset.svg';
+
   /// List of all assets
-  List<String> get values => [appLogo];
+  List<String> get values => [appLogo, reset];
 }
 
 class Assets {
