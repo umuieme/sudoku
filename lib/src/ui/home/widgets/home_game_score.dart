@@ -12,30 +12,32 @@ class HomeGameRecord extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final record = ref.watch(gameScoreNotifierProvider);
-    return Column(
-      children: [
-        Text(
-          "Record",
-          style: context.textTheme.displayMedium,
-        ),
-        record.when(
-            data: (data) {
-              return Column(
-                children: data
-                    .map(
-                      (e) => Text(
-                        "${e.$1}: ${e.$2.formatToMinuteAndSecond}",
-                        style: context.textTheme.headlineMedium,
-                      ),
-                    )
-                    .toList(),
-              );
-            },
-            error: (error, stackTrace) => const ErrorView(
-                  message: "Opps",
-                ),
-            loading: () => const AppLoading())
-      ],
+    return Center(
+      child: Column(
+        children: [
+          Text(
+            "Record",
+            style: context.textTheme.displayMedium,
+          ),
+          record.when(
+              data: (data) {
+                return Column(
+                  children: data
+                      .map(
+                        (e) => Text(
+                          "${e.$1}: ${e.$2.formatToMinuteAndSecond}",
+                          style: context.textTheme.headlineMedium,
+                        ),
+                      )
+                      .toList(),
+                );
+              },
+              error: (error, stackTrace) => const ErrorView(
+                    message: "Opps",
+                  ),
+              loading: () => const AppLoading())
+        ],
+      ),
     );
   }
 }
