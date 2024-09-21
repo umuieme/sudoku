@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sudoku_mordern/src/config/extensions/context_extension.dart';
 import 'package:sudoku_mordern/src/providers/game_play_provider.dart';
-import 'package:sudoku_mordern/src/ui/widgets/game_row.dart';
+import 'package:sudoku_mordern/src/ui/game_play/widgets/game_row.dart';
 
 class GameBoard extends HookConsumerWidget {
   const GameBoard({super.key});

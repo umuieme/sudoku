@@ -6,10 +6,10 @@ import 'package:sudoku_mordern/gen/assets.gen.dart';
 import 'package:sudoku_mordern/src/providers/game_end_provider.dart';
 import 'package:sudoku_mordern/src/providers/game_play_provider.dart';
 import 'package:sudoku_mordern/src/ui/common/confirmation_dialog.dart';
-import 'package:sudoku_mordern/src/ui/screens/game_end_screen.dart';
-import 'package:sudoku_mordern/src/ui/widgets/game_board.dart';
-import 'package:sudoku_mordern/src/ui/widgets/game_num_pad.dart';
-import 'package:sudoku_mordern/src/ui/widgets/game_timer.dart';
+import 'package:sudoku_mordern/src/ui/game_end/game_end_screen.dart';
+import 'package:sudoku_mordern/src/ui/game_play/widgets/game_board.dart';
+import 'package:sudoku_mordern/src/ui/game_play/widgets/game_num_pad.dart';
+import 'package:sudoku_mordern/src/ui/game_play/widgets/game_timer.dart';
 
 class GameScreen extends HookConsumerWidget {
   const GameScreen({super.key});
