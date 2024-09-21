@@ -6,7 +6,7 @@ part of 'game_timer_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$gameTimerNotifierHash() => r'f0e1e15e538f73711f6171fdb71ef016410db8c7';
+String _$gameTimerNotifierHash() => r'7274e531bed76b20c3bba8cc5d6b08dd12411b99';
 
 /// See also [GameTimerNotifier].
 @ProviderFor(GameTimerNotifier)

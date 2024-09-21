@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:sudoku_mordern/src/config/extensions/list_extension.dart';
 import 'package:sudoku_mordern/src/config/sudoku_generator.dart';
 import 'package:sudoku_mordern/src/data/model/cell_value.dart';
 import 'package:sudoku_mordern/src/providers/cell_selection_provider.dart';
@@ -14,6 +15,8 @@ class GamePlayNotifier extends _$GamePlayNotifier {
   SudokuGenerator generator = SudokuGenerator();
 
   List<List<CellValue>> completeSudoko = [];
+  List<List<CellValue>> initialSudoku = [];
+
   @override
   List<List<CellValue>> build() {
     List<List<int>> sudokuValue = generator.generateSudoku();
@@ -42,6 +45,7 @@ class GamePlayNotifier extends _$GamePlayNotifier {
             isGenerated: sudokuValue[i][j] != 0));
       }
     }
+    initialSudoku = unsolved.deepCopy();
     return unsolved;
   }
 
@@ -66,6 +70,10 @@ class GamePlayNotifier extends _$GamePlayNotifier {
           .updateScore(difficulty, time);
       ref.read(gameEndNotifierProvider.notifier).updateGameOver();
     }
+  }
+
+  void resetGame() {
+    state = initialSudoku.deepCopy();
   }
 
   // used to mark the cell as invalid cell with duplicate value

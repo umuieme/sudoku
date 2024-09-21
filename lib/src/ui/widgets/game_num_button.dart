@@ -10,10 +10,14 @@ class GameNumButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppPrimaryButton(
-      title: "$value",
-      padding: EdgeInsets.all(0.r),
-      onPressed: () => onPressed(),
+    return SizedBox(
+      height: 48.h,
+      width: 48.h,
+      child: AppPrimaryButton(
+        title: "$value",
+        padding: EdgeInsets.all(0.r),
+        onPressed: () => onPressed(),
+      ),
     );
   }
 }

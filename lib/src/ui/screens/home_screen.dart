@@ -85,17 +85,7 @@ class HomeScreen extends HookConsumerWidget {
                     )
                   ],
                 ),
-              SizedBox(height: 32.h),
-              AppPrimaryButton(
-                title: "Challenge a friend",
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const GameScreen(),
-                      ));
-                },
-              ),
+              const Spacer(),
               SizedBox(
                 height: 16.h,
               )
